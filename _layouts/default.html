@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ site.lang | default: 'ko-KR' }}">
+<html lang="{{ site.lang | default: 'en' }}" data-language="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,7 +10,20 @@
         {{ site.title }}
       {% endif %}
     </title>
-    <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 160 }}">
+    <meta name="description" content="{{ page.excerpt_en | default: page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 160 }}">
+    <script>
+      (function () {
+        try {
+          var savedLanguage = localStorage.getItem("preferred-language");
+          var language = savedLanguage === "kr" ? "kr" : "en";
+          document.documentElement.setAttribute("data-language", language);
+          document.documentElement.lang = language === "kr" ? "ko-KR" : "en";
+        } catch (error) {
+          document.documentElement.setAttribute("data-language", "en");
+          document.documentElement.lang = "en";
+        }
+      })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
@@ -22,7 +35,10 @@
     <div class="site-shell">
       <header class="site-header">
         <div class="site-brand">
-          <span class="site-kicker">Personal Journal</span>
+          <span class="site-kicker bilingual">
+            <span class="en">Personal Journal</span>
+            <span class="ko">개인 저널</span>
+          </span>
           <a class="site-title" href="{{ '/' | relative_url }}">
             <span class="bilingual inline">
               <span class="en">Park Brother Blog</span>
@@ -30,20 +46,26 @@
             </span>
           </a>
         </div>
-        <nav class="site-nav">
-          <a href="{{ '/' | relative_url }}">
-            <span class="bilingual inline nav-label">
-              <span class="en">Home</span>
-              <span class="ko">홈</span>
-            </span>
-          </a>
-          <a href="{{ '/about/' | relative_url }}">
-            <span class="bilingual inline nav-label">
-              <span class="en">About</span>
-              <span class="ko">소개</span>
-            </span>
-          </a>
-        </nav>
+        <div class="site-header-actions">
+          <nav class="site-nav">
+            <a href="{{ '/' | relative_url }}">
+              <span class="bilingual inline nav-label">
+                <span class="en">Home</span>
+                <span class="ko">홈</span>
+              </span>
+            </a>
+            <a href="{{ '/about/' | relative_url }}">
+              <span class="bilingual inline nav-label">
+                <span class="en">About</span>
+                <span class="ko">소개</span>
+              </span>
+            </a>
+          </nav>
+          <div class="language-switcher" role="group" aria-label="Language selector">
+            <button class="language-button" type="button" data-language-switch="en" aria-pressed="true">EN</button>
+            <button class="language-button" type="button" data-language-switch="kr" aria-pressed="false">KR</button>
+          </div>
+        </div>
       </header>
 
       <main class="site-main">
@@ -65,5 +87,36 @@
         </div>
       </footer>
     </div>
+    <script>
+      (function () {
+        var root = document.documentElement;
+        var buttons = document.querySelectorAll("[data-language-switch]");
+
+        function applyLanguage(language) {
+          var safeLanguage = language === "kr" ? "kr" : "en";
+          root.setAttribute("data-language", safeLanguage);
+          root.lang = safeLanguage === "kr" ? "ko-KR" : "en";
+
+          buttons.forEach(function (button) {
+            var isActive = button.getAttribute("data-language-switch") === safeLanguage;
+            button.classList.toggle("is-active", isActive);
+            button.setAttribute("aria-pressed", isActive ? "true" : "false");
+          });
+
+          try {
+            localStorage.setItem("preferred-language", safeLanguage);
+          } catch (error) {
+          }
+        }
+
+        buttons.forEach(function (button) {
+          button.addEventListener("click", function () {
+            applyLanguage(button.getAttribute("data-language-switch"));
+          });
+        });
+
+        applyLanguage(root.getAttribute("data-language"));
+      })();
+    </script>
   </body>
 </html>

@@ -1,10 +1,13 @@
 ---
-title: About | 소개
+title: About
 permalink: /about/
 ---
 
 <section class="panel">
-  <span class="eyebrow">About This Space</span>
+  <span class="eyebrow bilingual">
+    <span class="en">About This Space</span>
+    <span class="ko">이 공간에 대해</span>
+  </span>
   <h1 class="page-title bilingual">
     <span class="en">A calmer, more personal corner of the web.</span>
     <span class="ko">조금 더 차분하고 개인적인 웹의 한 구석.</span>

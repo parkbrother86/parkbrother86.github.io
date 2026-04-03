@@ -1,9 +1,9 @@
-title: Park Brother Blog | 박형제 블로그
+title: Park Brother Blog
 email: ""
-description: Notes, posts, and updates from Park Brother. | 박형제의 글과 기록을 담는 공간입니다.
+description: Notes, posts, and updates from Park Brother.
 baseurl: ""
 url: "https://parkbrother86.github.io"
-lang: ko-KR
+lang: en
 timezone: Asia/Seoul
 markdown: kramdown
 permalink: /:categories/:year/:month/:day/:title/

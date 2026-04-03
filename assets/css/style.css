@@ -142,13 +142,33 @@ a {
   display: inline-flex;
 }
 
-.bilingual .en {
-  font-weight: 700;
+.bilingual > .en,
+.bilingual > .ko {
+  display: block;
+}
+
+.bilingual.inline > .en,
+.bilingual.inline > .ko {
+  display: inline;
+}
+
+html[data-language="en"] .bilingual > .ko {
+  display: none !important;
+}
+
+html[data-language="kr"] .bilingual > .en {
+  display: none !important;
 }
 
 .bilingual .ko {
   color: var(--muted);
   font-size: 0.92em;
+}
+
+.site-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
 }
 
 .site-nav {
@@ -182,12 +202,54 @@ a {
   transform: translateY(-1px);
 }
 
+.nav-label {
+  font-weight: 800;
+}
+
 .nav-label .en {
   font-size: 0.9rem;
 }
 
 .nav-label .ko {
   font-size: 0.78rem;
+}
+
+.language-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.28rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.42);
+}
+
+.language-button {
+  min-width: 3rem;
+  padding: 0.55rem 0.8rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.language-button:hover,
+.language-button:focus-visible {
+  color: var(--accent-deep);
+  outline: none;
+}
+
+.language-button.is-active {
+  background: linear-gradient(135deg, #b85833, #8c3e20);
+  color: #fff7ef;
+  box-shadow: 0 10px 24px rgba(141, 63, 34, 0.2);
 }
 
 .site-main {
@@ -335,6 +397,10 @@ a {
   display: block;
   margin-top: 0.35rem;
   font-size: 1.1rem;
+}
+
+.metric-label {
+  font-weight: 800;
 }
 
 .metric-label .en {
@@ -522,8 +588,6 @@ code {
 }
 
 @media (max-width: 860px) {
-  .site-header,
-  .site-footer,
   .hero-grid,
   .feature-grid {
     grid-template-columns: 1fr;
@@ -532,12 +596,29 @@ code {
   .site-header,
   .site-footer {
     border-radius: var(--radius-lg);
-    align-items: flex-start;
     position: static;
+  }
+
+  .site-header {
+    align-items: flex-start;
+  }
+
+  .site-header-actions {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
   }
 
   .site-nav {
     width: 100%;
+  }
+
+  .language-switcher {
+    align-self: flex-start;
+  }
+
+  .site-footer {
+    flex-direction: column;
   }
 }
 

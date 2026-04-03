@@ -1,10 +1,13 @@
 ---
-title: Home | 홈
+title: Home
 ---
 
 <section class="hero-grid">
   <article class="hero hero-primary">
-    <span class="eyebrow">Bilingual Journal</span>
+    <span class="eyebrow bilingual">
+      <span class="en">Editorial Journal</span>
+      <span class="ko">에디토리얼 저널</span>
+    </span>
     <h1 class="hero-title bilingual">
       <span class="en">Thoughts, sketches, and personal notes with a sharper editorial feel.</span>
       <span class="ko">생각과 기록, 개인적인 메모를 조금 더 잡지 같은 분위기로 담아내는 공간.</span>
@@ -35,14 +38,20 @@ title: Home | 홈
         <span class="en">Current mood</span>
         <span class="ko">현재 분위기</span>
       </span>
-      <strong>Editorial / Reflective</strong>
+      <strong class="bilingual">
+        <span class="en">Editorial / Reflective</span>
+        <span class="ko">기록형 / 성찰형</span>
+      </strong>
     </div>
     <div class="metric-card">
       <span class="metric-label bilingual">
         <span class="en">Language</span>
         <span class="ko">언어</span>
       </span>
-      <strong>English + Korean</strong>
+      <strong class="bilingual">
+        <span class="en">English / Korean</span>
+        <span class="ko">영문 / 국문</span>
+      </strong>
     </div>
     <div class="metric-note bilingual">
       <span class="en">A flexible home for posts, project notes, reading logs, and small updates.</span>
@@ -78,7 +87,10 @@ title: Home | 홈
 
 <section class="section-head">
   <div>
-    <span class="eyebrow">Latest Writing</span>
+    <span class="eyebrow bilingual">
+      <span class="en">Latest Writing</span>
+      <span class="ko">최근 기록</span>
+    </span>
     <h2 class="section-title bilingual">
       <span class="en">Recent Posts</span>
       <span class="ko">최근 글</span>
@@ -91,8 +103,24 @@ title: Home | 홈
     {% for post in site.posts limit: 5 %}
       <article class="post-card">
         <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
-        <h3 class="post-card-title"><a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-        <p>{{ post.excerpt | strip_html | truncate: 150 }}</p>
+        <h3 class="post-card-title">
+          <a class="post-link" href="{{ post.url | relative_url }}">
+            <span class="bilingual">
+              <span class="en">{{ post.title }}</span>
+              {% if post.title_kr %}
+                <span class="ko">{{ post.title_kr }}</span>
+              {% endif %}
+            </span>
+          </a>
+        </h3>
+        {% if post.excerpt_kr %}
+          <p class="bilingual">
+            <span class="en">{{ post.excerpt_en | default: post.excerpt | strip_html | truncate: 150 }}</span>
+            <span class="ko">{{ post.excerpt_kr | truncate: 150 }}</span>
+          </p>
+        {% else %}
+          <p>{{ post.excerpt | strip_html | truncate: 150 }}</p>
+        {% endif %}
         <a class="read-more" href="{{ post.url | relative_url }}">
           <span class="bilingual inline">
             <span class="en">Read entry</span>

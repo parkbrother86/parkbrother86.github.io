@@ -4,8 +4,16 @@ layout: default
 
 <article class="article-shell">
   <header class="article-hero">
-    <span class="eyebrow">Journal Entry</span>
-    <h1 class="post-title">{{ page.title }}</h1>
+    <span class="eyebrow bilingual">
+      <span class="en">Journal Entry</span>
+      <span class="ko">기록</span>
+    </span>
+    <h1 class="post-title bilingual">
+      <span class="en">{{ page.title }}</span>
+      {% if page.title_kr %}
+        <span class="ko">{{ page.title_kr }}</span>
+      {% endif %}
+    </h1>
     <p class="post-meta">
       <span class="bilingual inline">
         <span class="en">Published on {{ page.date | date: "%B %d, %Y" }}</span>
