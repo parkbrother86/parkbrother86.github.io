@@ -1,7 +1,7 @@
 ---
 title: AI Wrote the Code, but Could Not Find the Bug
 title_kr: AI가 코드를 다 짰는데 버그를 못 찾았다
-date: 2026-04-03 23:40:00 +0800
+date: 2026-04-03 12:00:00 +0800
 categories:
   - server-engineering
 excerpt_en: AI helped me build and review an MMORPG server, but two serious bugs only surfaced after 6,216 simulation runs and well over 100 load tests.
