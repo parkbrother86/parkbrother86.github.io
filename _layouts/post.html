@@ -2,13 +2,18 @@
 layout: default
 ---
 
-<article class="panel post-body">
-  <h1 class="post-title">{{ page.title }}</h1>
-  <p class="post-meta">
-    <span class="bilingual inline">
-      <span class="en">Published on {{ page.date | date: "%Y-%m-%d" }}</span>
-      <span class="ko">{{ page.date | date: "%Y-%m-%d" }} 게시</span>
-    </span>
-  </p>
-  {{ content }}
+<article class="article-shell">
+  <header class="article-hero">
+    <span class="eyebrow">Journal Entry</span>
+    <h1 class="post-title">{{ page.title }}</h1>
+    <p class="post-meta">
+      <span class="bilingual inline">
+        <span class="en">Published on {{ page.date | date: "%B %d, %Y" }}</span>
+        <span class="ko">{{ page.date | date: "%Y-%m-%d" }} 게시</span>
+      </span>
+    </p>
+  </header>
+  <div class="panel post-body">
+    {{ content }}
+  </div>
 </article>

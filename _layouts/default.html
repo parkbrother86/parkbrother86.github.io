@@ -11,17 +11,25 @@
       {% endif %}
     </title>
     <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 160 }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   </head>
   <body>
+    <div class="page-aura aura-one" aria-hidden="true"></div>
+    <div class="page-aura aura-two" aria-hidden="true"></div>
     <div class="site-shell">
       <header class="site-header">
-        <a class="site-title" href="{{ '/' | relative_url }}">
-          <span class="bilingual inline">
-            <span class="en">Park Brother Blog</span>
-            <span class="ko">박형제 블로그</span>
-          </span>
-        </a>
+        <div class="site-brand">
+          <span class="site-kicker">Personal Journal</span>
+          <a class="site-title" href="{{ '/' | relative_url }}">
+            <span class="bilingual inline">
+              <span class="en">Park Brother Blog</span>
+              <span class="ko">박형제 블로그</span>
+            </span>
+          </a>
+        </div>
         <nav class="site-nav">
           <a href="{{ '/' | relative_url }}">
             <span class="bilingual inline nav-label">
@@ -43,10 +51,18 @@
       </main>
 
       <footer class="site-footer">
-        <p class="bilingual">
-          <span class="en">Notes, posts, and updates from Park Brother.</span>
-          <span class="ko">박형제의 글과 기록을 담는 공간입니다.</span>
-        </p>
+        <div class="footer-copy">
+          <p class="bilingual">
+            <span class="en">Notes, posts, and updates from Park Brother.</span>
+            <span class="ko">박형제의 글과 기록을 담는 공간입니다.</span>
+          </p>
+        </div>
+        <div class="footer-meta">
+          <p class="bilingual">
+            <span class="en">Built with Jekyll and GitHub Pages.</span>
+            <span class="ko">Jekyll과 GitHub Pages로 제작했습니다.</span>
+          </p>
+        </div>
       </footer>
     </div>
   </body>
