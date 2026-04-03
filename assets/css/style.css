@@ -1,0 +1,227 @@
+:root {
+  --bg: #f4efe7;
+  --surface: rgba(255, 255, 255, 0.82);
+  --text: #1b1a17;
+  --muted: #63594a;
+  --accent: #b5542f;
+  --accent-strong: #8d3f22;
+  --border: rgba(27, 26, 23, 0.12);
+  --shadow: 0 24px 60px rgba(38, 24, 16, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(255, 214, 170, 0.7), transparent 30%),
+    radial-gradient(circle at right, rgba(192, 223, 255, 0.7), transparent 28%),
+    linear-gradient(180deg, #f7f2ea 0%, #efe7db 100%);
+  font-family: "Segoe UI", "Noto Sans KR", sans-serif;
+  line-height: 1.7;
+}
+
+a {
+  color: inherit;
+}
+
+.site-shell {
+  width: min(960px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 2rem 0 4rem;
+}
+
+.site-header,
+.site-footer,
+.hero,
+.panel,
+.post-card {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow);
+  border-radius: 24px;
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem 1.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.site-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+
+.site-nav {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.site-nav a {
+  text-decoration: none;
+  color: var(--muted);
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible,
+.site-title:hover,
+.site-title:focus-visible,
+.post-link:hover,
+.post-link:focus-visible {
+  color: var(--accent-strong);
+}
+
+.site-main {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.hero {
+  padding: 2.5rem;
+}
+
+.eyebrow {
+  display: inline-flex;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(181, 84, 47, 0.12);
+  color: var(--accent-strong);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.hero h1,
+.page-title,
+.post-title {
+  margin: 0.75rem 0 0.5rem;
+  line-height: 1.15;
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 5vw, 4rem);
+}
+
+.hero p,
+.page-intro,
+.post-meta,
+.empty-state {
+  color: var(--muted);
+}
+
+.hero-actions {
+  display: flex;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.75rem 1.15rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.button.primary {
+  background: var(--accent);
+  color: #fffaf6;
+}
+
+.button.secondary {
+  border: 1px solid var(--border);
+}
+
+.panel,
+.post-card,
+.post-body {
+  padding: 1.6rem;
+}
+
+.section-title {
+  margin: 0 0 0.9rem;
+  font-size: 1.15rem;
+}
+
+.post-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.post-card h3 {
+  margin: 0 0 0.35rem;
+}
+
+.post-link {
+  text-decoration: none;
+}
+
+.post-date {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.post-meta {
+  margin-bottom: 1.4rem;
+  font-size: 0.95rem;
+}
+
+.post-body > :first-child,
+.panel > :first-child {
+  margin-top: 0;
+}
+
+.post-body > :last-child,
+.panel > :last-child {
+  margin-bottom: 0;
+}
+
+.site-footer {
+  margin-top: 1.5rem;
+  padding: 1rem 1.4rem;
+  color: var(--muted);
+}
+
+code {
+  padding: 0.15rem 0.35rem;
+  border-radius: 8px;
+  background: rgba(27, 26, 23, 0.06);
+  font-family: Consolas, "Courier New", monospace;
+}
+
+@media (max-width: 640px) {
+  .site-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .hero,
+  .panel,
+  .post-card,
+  .post-body {
+    padding: 1.25rem;
+  }
+}

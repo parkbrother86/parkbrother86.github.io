@@ -1,0 +1,20 @@
+title: Park Brother Blog
+email: ""
+description: Notes, posts, and updates from Park Brother.
+baseurl: ""
+url: "https://parkbrother86.github.io"
+lang: ko-KR
+timezone: Asia/Seoul
+markdown: kramdown
+permalink: /:categories/:year/:month/:day/:title/
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+plugins: []
