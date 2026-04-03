@@ -1,0 +1,64 @@
+---
+layout: default
+---
+
+{% assign category_posts = site.categories[page.category_slug] %}
+
+<section class="panel category-archive">
+  <header class="category-archive-head">
+    <span class="eyebrow bilingual">
+      <span class="en">Category Archive</span>
+      <span class="ko">카테고리 아카이브</span>
+    </span>
+    <h1 class="page-title bilingual">
+      <span class="en">{{ page.category_en | default: page.title }}</span>
+      <span class="ko">{{ page.category_kr }}</span>
+    </h1>
+    <p class="page-intro bilingual">
+      <span class="en">{{ page.category_intro_en }}</span>
+      <span class="ko">{{ page.category_intro_kr }}</span>
+    </p>
+  </header>
+
+  {% if category_posts and category_posts.size > 0 %}
+    <div class="archive-list">
+      {% for post in category_posts %}
+        <article class="archive-item">
+          <div class="archive-item-head">
+            <span class="archive-date bilingual">
+              <span class="en">{{ post.date | date: "%B %d, %Y" }}</span>
+              <span class="ko">{{ post.date | date: "%Y-%m-%d" }}</span>
+            </span>
+          </div>
+          <div class="archive-item-body">
+            <h2 class="archive-title">
+              <a href="{{ post.url | relative_url }}">
+                <span class="bilingual">
+                  <span class="en">{{ post.title }}</span>
+                  {% if post.title_kr %}
+                    <span class="ko">{{ post.title_kr }}</span>
+                  {% endif %}
+                </span>
+              </a>
+            </h2>
+            <p class="archive-excerpt bilingual">
+              <span class="en">{{ post.excerpt_en | default: post.excerpt | strip_html | strip_newlines }}</span>
+              <span class="ko">{{ post.excerpt_kr | default: post.excerpt | strip_html | strip_newlines }}</span>
+            </p>
+            <a class="archive-read-more bilingual inline" href="{{ post.url | relative_url }}">
+              <span class="en">Read post</span>
+              <span class="ko">글 읽기</span>
+            </a>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="archive-empty">
+      <p class="empty-state bilingual">
+        <span class="en">No posts have been published in this category yet.</span>
+        <span class="ko">이 카테고리에는 아직 글이 없습니다.</span>
+      </p>
+    </div>
+  {% endif %}
+</section>

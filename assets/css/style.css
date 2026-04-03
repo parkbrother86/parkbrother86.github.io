@@ -100,9 +100,9 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 1.2rem;
   padding: 1rem 1.2rem 1rem 1.4rem;
-  border-radius: 999px;
+  border-radius: 32px;
   margin-bottom: 1.5rem;
   position: sticky;
   top: 1rem;
@@ -168,21 +168,25 @@ html[data-language="kr"] .bilingual > .en {
 
 .site-header-actions {
   display: flex;
-  align-items: center;
-  gap: 0.9rem;
+  align-items: flex-start;
+  gap: 0.8rem;
+  flex: 1;
+  justify-content: flex-end;
 }
 
 .site-nav {
   display: flex;
-  gap: 0.7rem;
+  gap: 0.45rem;
   flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .site-nav a {
-  padding: 0.72rem 0.95rem;
+  padding: 0.62rem 0.78rem;
   border-radius: 999px;
   text-decoration: none;
   color: var(--muted);
+  border: 1px solid transparent;
   transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
 }
 
@@ -200,7 +204,14 @@ html[data-language="kr"] .bilingual > .en {
 .site-nav a:hover,
 .site-nav a:focus-visible {
   background: rgba(165, 76, 43, 0.08);
+  border-color: rgba(165, 76, 43, 0.08);
   transform: translateY(-1px);
+}
+
+.site-nav a.is-active {
+  background: rgba(165, 76, 43, 0.11);
+  border-color: rgba(165, 76, 43, 0.16);
+  color: var(--accent-deep);
 }
 
 .nav-label {
@@ -208,11 +219,11 @@ html[data-language="kr"] .bilingual > .en {
 }
 
 .nav-label .en {
-  font-size: 0.9rem;
+  font-size: 0.78rem;
 }
 
 .nav-label .ko {
-  font-size: 0.78rem;
+  font-size: 0.72rem;
 }
 
 .language-switcher {
@@ -301,9 +312,18 @@ html[data-language="kr"] .bilingual > .en {
   line-height: 1.14;
 }
 
+.category-name-link {
+  text-decoration: none;
+}
+
+.category-name-link:hover .category-name,
+.category-name-link:focus-visible .category-name {
+  color: var(--accent-deep);
+}
+
 .category-entry {
   display: grid;
-  gap: 0.35rem;
+  gap: 0.4rem;
   align-content: center;
 }
 
@@ -322,6 +342,22 @@ html[data-language="kr"] .bilingual > .en {
 .category-entry-empty {
   color: var(--muted);
   font-size: 0.94rem;
+}
+
+.category-browse,
+.archive-read-more {
+  width: fit-content;
+  color: var(--accent-deep);
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.category-browse:hover,
+.category-browse:focus-visible,
+.archive-read-more:hover,
+.archive-read-more:focus-visible {
+  text-decoration: underline;
 }
 
 .hero-grid,
@@ -594,6 +630,75 @@ html[data-language="kr"] .bilingual > .en {
   gap: 1rem;
 }
 
+.category-archive {
+  display: grid;
+  gap: 1.4rem;
+}
+
+.category-archive-head {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.archive-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.archive-item {
+  display: grid;
+  gap: 0.8rem;
+  padding: 1.35rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.archive-item:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.archive-item:last-child {
+  padding-bottom: 0;
+}
+
+.archive-item-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.archive-date,
+.archive-excerpt {
+  color: var(--muted);
+}
+
+.archive-item-body {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.archive-title {
+  margin: 0;
+  font-family: "IBM Plex Sans KR", sans-serif;
+  font-size: clamp(1.35rem, 2.4vw, 1.9rem);
+  font-weight: 700;
+  line-height: 1.16;
+}
+
+.archive-title a {
+  text-decoration: none;
+}
+
+.archive-title a:hover,
+.archive-title a:focus-visible {
+  color: var(--accent-deep);
+}
+
+.archive-empty {
+  padding-top: 0.25rem;
+}
+
 .article-hero {
   background:
     radial-gradient(circle at top left, rgba(255, 214, 152, 0.34), transparent 26%),
@@ -740,10 +845,12 @@ code {
     width: 100%;
     flex-direction: column;
     align-items: stretch;
+    justify-content: flex-start;
   }
 
   .site-nav {
     width: 100%;
+    justify-content: flex-start;
   }
 
   .language-switcher {
@@ -752,6 +859,11 @@ code {
 
   .site-footer {
     flex-direction: column;
+  }
+
+  .archive-item-head {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 
@@ -779,5 +891,9 @@ code {
   .site-nav a {
     flex: 1 1 auto;
     justify-content: center;
+  }
+
+  .archive-item {
+    padding: 1.05rem 0;
   }
 }

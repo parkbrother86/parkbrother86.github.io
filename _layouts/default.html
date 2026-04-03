@@ -47,19 +47,25 @@
           </a>
         </div>
         <div class="site-header-actions">
+          {% assign current_category_slug = page.category_slug %}
+          {% unless current_category_slug %}
+            {% assign current_category_slug = page.categories | first %}
+          {% endunless %}
           <nav class="site-nav">
-            <a href="{{ '/' | relative_url }}">
+            <a class="{% if page.url == '/' or page.url == '/index.html' %}is-active{% endif %}" href="{{ '/' | relative_url }}">
               <span class="bilingual inline nav-label">
                 <span class="en">Home</span>
                 <span class="ko">홈</span>
               </span>
             </a>
-            <a href="{{ '/about/' | relative_url }}">
-              <span class="bilingual inline nav-label">
-                <span class="en">About</span>
-                <span class="ko">소개</span>
-              </span>
-            </a>
+            {% for category in site.data.categories %}
+              <a class="{% if current_category_slug == category.slug %}is-active{% endif %}" href="{{ category.path | relative_url }}">
+                <span class="bilingual inline nav-label">
+                  <span class="en">{{ category.en }}</span>
+                  <span class="ko">{{ category.kr }}</span>
+                </span>
+              </a>
+            {% endfor %}
           </nav>
           <div class="language-switcher" role="group" aria-label="Language selector">
             <button class="language-button" type="button" data-language-switch="en" aria-pressed="true">EN</button>
