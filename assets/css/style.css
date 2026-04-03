@@ -30,7 +30,7 @@ body {
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.45), transparent 30%),
     linear-gradient(135deg, #f8f3ea 0%, #efe4d3 55%, #eadfd0 100%);
-  font-family: "Manrope", "Noto Sans KR", sans-serif;
+  font-family: "IBM Plex Sans KR", sans-serif;
   line-height: 1.75;
   position: relative;
   overflow-x: hidden;
@@ -119,15 +119,16 @@ a {
   color: var(--muted);
   font-size: 0.72rem;
   font-weight: 700;
+  font-family: "IBM Plex Mono", monospace;
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
 .site-title {
-  font-family: "Cormorant Garamond", serif;
-  font-size: 2rem;
+  font-family: "IBM Plex Sans KR", sans-serif;
+  font-size: 1.75rem;
   font-weight: 700;
-  line-height: 1;
+  line-height: 1.1;
   letter-spacing: 0.01em;
   text-decoration: none;
 }
@@ -232,7 +233,7 @@ html[data-language="kr"] .bilingual > .en {
   background: transparent;
   color: var(--muted);
   cursor: pointer;
-  font: inherit;
+  font-family: "IBM Plex Mono", monospace;
   font-size: 0.82rem;
   font-weight: 800;
   letter-spacing: 0.08em;
@@ -288,14 +289,16 @@ html[data-language="kr"] .bilingual > .en {
   color: rgba(32, 26, 22, 0.36);
   font-size: 0.8rem;
   font-weight: 800;
+  font-family: "IBM Plex Mono", monospace;
   letter-spacing: 0.16em;
 }
 
 .category-name {
   margin: 0;
-  font-family: "Cormorant Garamond", serif;
-  font-size: clamp(1.7rem, 3vw, 2.6rem);
-  line-height: 1.02;
+  font-family: "IBM Plex Sans KR", sans-serif;
+  font-size: clamp(1.45rem, 2.6vw, 2.1rem);
+  font-weight: 700;
+  line-height: 1.14;
 }
 
 .category-entry {
@@ -363,6 +366,7 @@ html[data-language="kr"] .bilingual > .en {
   color: var(--accent-deep);
   font-size: 0.76rem;
   font-weight: 800;
+  font-family: "IBM Plex Mono", monospace;
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
@@ -372,18 +376,14 @@ html[data-language="kr"] .bilingual > .en {
 .post-title,
 .section-title {
   margin: 0.85rem 0 0;
-  line-height: 0.98;
-}
-
-.hero-title,
-.page-title,
-.post-title {
-  font-family: "Cormorant Garamond", serif;
+  line-height: 1.08;
+  font-family: "IBM Plex Sans KR", sans-serif;
 }
 
 .hero-title {
-  font-size: clamp(3rem, 7vw, 5.6rem);
+  font-size: clamp(2.5rem, 6vw, 4.2rem);
   max-width: 12ch;
+  font-weight: 700;
 }
 
 .hero-copy,
@@ -527,7 +527,8 @@ html[data-language="kr"] .bilingual > .en {
 }
 
 .section-title {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  font-weight: 700;
 }
 
 .hero-title .en,
@@ -566,9 +567,10 @@ html[data-language="kr"] .bilingual > .en {
 
 .post-card-title {
   margin: 0;
-  font-family: "Cormorant Garamond", serif;
-  font-size: 2rem;
-  line-height: 1.05;
+  font-family: "IBM Plex Sans KR", sans-serif;
+  font-size: 1.55rem;
+  font-weight: 700;
+  line-height: 1.18;
 }
 
 .post-link {
@@ -600,7 +602,8 @@ html[data-language="kr"] .bilingual > .en {
 }
 
 .post-title {
-  font-size: clamp(2.8rem, 6vw, 4.8rem);
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-weight: 700;
 }
 
 .post-meta {
@@ -648,7 +651,7 @@ code {
   padding: 0.16rem 0.4rem;
   border-radius: 10px;
   background: rgba(32, 26, 22, 0.08);
-  font-family: Consolas, "Courier New", monospace;
+  font-family: "IBM Plex Mono", monospace;
 }
 
 @media (max-width: 860px) {
