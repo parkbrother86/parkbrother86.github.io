@@ -1,0 +1,18 @@
+- slug: server-engineering
+  en: Server Engineering
+  kr: 서버 엔지니어링
+- slug: game-client-engineering
+  en: Game Client Engineering
+  kr: 게임 클라이언트 엔지니어링
+- slug: utility-pipeline
+  en: Utility Pipeline
+  kr: 유틸리티 파이프라인
+- slug: content-planning
+  en: Content Planning
+  kr: 콘텐츠 기획
+- slug: statistics-papers
+  en: Statistics & Papers
+  kr: 통계 및 논문
+- slug: github-open-source
+  en: GitHub Open Source
+  kr: 깃허브 오픈소스
