@@ -58,14 +58,32 @@
                 <span class="ko">홈</span>
               </span>
             </a>
-            {% for category in site.data.categories %}
-              <a class="{% if current_category_slug == category.slug %}is-active{% endif %}" href="{{ category.path | relative_url }}">
+            <details class="nav-dropdown {% if current_category_slug %}is-active{% endif %}">
+              <summary>
                 <span class="bilingual inline nav-label">
-                  <span class="en">{{ category.en }}</span>
-                  <span class="ko">{{ category.kr }}</span>
+                  <span class="en">Categories</span>
+                  <span class="ko">카테고리</span>
                 </span>
-              </a>
-            {% endfor %}
+                <span class="nav-dropdown-caret" aria-hidden="true">+</span>
+              </summary>
+              <div class="nav-dropdown-panel">
+                <p class="nav-dropdown-heading bilingual">
+                  <span class="en">Browse writing tracks</span>
+                  <span class="ko">연재 카테고리 보기</span>
+                </p>
+                <div class="nav-dropdown-grid">
+                  {% for category in site.data.categories %}
+                    <a class="nav-dropdown-link {% if current_category_slug == category.slug %}is-active{% endif %}" href="{{ category.path | relative_url }}">
+                      <span class="nav-dropdown-index">{{ forloop.index | prepend: '0' }}</span>
+                      <span class="bilingual">
+                        <span class="en">{{ category.en }}</span>
+                        <span class="ko">{{ category.kr }}</span>
+                      </span>
+                    </a>
+                  {% endfor %}
+                </div>
+              </div>
+            </details>
           </nav>
           <div class="language-switcher" role="group" aria-label="Language selector">
             <button class="language-button" type="button" data-language-switch="en" aria-pressed="true">EN</button>
@@ -97,6 +115,7 @@
       (function () {
         var root = document.documentElement;
         var buttons = document.querySelectorAll("[data-language-switch]");
+        var navDropdowns = document.querySelectorAll(".nav-dropdown");
 
         function applyLanguage(language) {
           var safeLanguage = language === "kr" ? "kr" : "en";
@@ -119,6 +138,22 @@
           button.addEventListener("click", function () {
             applyLanguage(button.getAttribute("data-language-switch"));
           });
+        });
+
+        document.addEventListener("click", function (event) {
+          navDropdowns.forEach(function (dropdown) {
+            if (!dropdown.contains(event.target)) {
+              dropdown.removeAttribute("open");
+            }
+          });
+        });
+
+        document.addEventListener("keydown", function (event) {
+          if (event.key === "Escape") {
+            navDropdowns.forEach(function (dropdown) {
+              dropdown.removeAttribute("open");
+            });
+          }
         });
 
         applyLanguage(root.getAttribute("data-language"));
