@@ -5,6 +5,8 @@ layout: default
 {% assign article_category_slug = page.categories | first %}
 {% assign article_category = site.data.categories | where: "slug", article_category_slug | first %}
 {% assign recent_posts = site.posts | where_exp: "post", "post.url != page.url" %}
+{% assign article_word_count = page.content | strip_html | number_of_words %}
+{% assign article_read_minutes = article_word_count | plus: 219 | divided_by: 220 %}
 
 <article class="article-shell">
   <div class="article-main">
@@ -34,8 +36,8 @@ layout: default
   <aside class="article-sidebar">
     <div class="panel article-side-panel">
       <p class="article-side-kicker bilingual">
-        <span class="en">This article</span>
-        <span class="ko">이 글</span>
+        <span class="en">Overview</span>
+        <span class="ko">개요</span>
       </p>
       {% if article_category %}
         <a class="article-side-category" href="{{ article_category.path | relative_url }}">
@@ -44,6 +46,12 @@ layout: default
             <span class="ko">{{ article_category.kr }}</span>
           </span>
         </a>
+      {% endif %}
+      {% if page.excerpt_en or page.excerpt_kr %}
+        <p class="article-side-summary bilingual">
+          <span class="en">{{ page.excerpt_en | default: page.excerpt | strip_html | strip_newlines }}</span>
+          <span class="ko">{{ page.excerpt_kr | default: page.excerpt | strip_html | strip_newlines }}</span>
+        </p>
       {% endif %}
       <dl class="article-side-meta">
         <div class="article-side-meta-row">
@@ -68,7 +76,25 @@ layout: default
             </dd>
           </div>
         {% endif %}
+        <div class="article-side-meta-row">
+          <dt class="bilingual">
+            <span class="en">Length</span>
+            <span class="ko">분량</span>
+          </dt>
+          <dd class="bilingual">
+            <span class="en">{{ article_read_minutes }} min read</span>
+            <span class="ko">약 {{ article_read_minutes }}분</span>
+          </dd>
+        </div>
       </dl>
+      {% if article_category %}
+        <a class="article-side-archive" href="{{ article_category.path | relative_url }}">
+          <span class="bilingual inline">
+            <span class="en">Open category archive</span>
+            <span class="ko">카테고리 아카이브 보기</span>
+          </span>
+        </a>
+      {% endif %}
     </div>
 
     <div class="panel article-side-panel">
