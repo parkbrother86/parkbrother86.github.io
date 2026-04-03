@@ -2,26 +2,99 @@
 layout: default
 ---
 
+{% assign article_category_slug = page.categories | first %}
+{% assign article_category = site.data.categories | where: "slug", article_category_slug | first %}
+{% assign recent_posts = site.posts | where_exp: "post", "post.url != page.url" %}
+
 <article class="article-shell">
-  <header class="article-hero">
-    <span class="eyebrow bilingual">
-      <span class="en">Journal Entry</span>
-      <span class="ko">기록</span>
-    </span>
-    <h1 class="post-title bilingual">
-      <span class="en">{{ page.title }}</span>
-      {% if page.title_kr %}
-        <span class="ko">{{ page.title_kr }}</span>
-      {% endif %}
-    </h1>
-    <p class="post-meta">
-      <span class="bilingual inline">
-        <span class="en">Published on {{ page.date | date: "%B %d, %Y" }}</span>
-        <span class="ko">{{ page.date | date: "%Y-%m-%d" }} 게시</span>
+  <div class="article-main">
+    <header class="article-hero">
+      <span class="eyebrow bilingual">
+        <span class="en">Journal Entry</span>
+        <span class="ko">기록</span>
       </span>
-    </p>
-  </header>
-  <div class="panel post-body">
-    {{ content }}
+      <h1 class="post-title bilingual">
+        <span class="en">{{ page.title }}</span>
+        {% if page.title_kr %}
+          <span class="ko">{{ page.title_kr }}</span>
+        {% endif %}
+      </h1>
+      <p class="post-meta">
+        <span class="bilingual inline">
+          <span class="en">Published on {{ page.date | date: "%B %d, %Y" }}</span>
+          <span class="ko">{{ page.date | date: "%Y-%m-%d" }} 게시</span>
+        </span>
+      </p>
+    </header>
+    <div class="panel post-body">
+      {{ content }}
+    </div>
   </div>
+
+  <aside class="article-sidebar">
+    <div class="panel article-side-panel">
+      <p class="article-side-kicker bilingual">
+        <span class="en">This article</span>
+        <span class="ko">이 글</span>
+      </p>
+      {% if article_category %}
+        <a class="article-side-category" href="{{ article_category.path | relative_url }}">
+          <span class="bilingual">
+            <span class="en">{{ article_category.en }}</span>
+            <span class="ko">{{ article_category.kr }}</span>
+          </span>
+        </a>
+      {% endif %}
+      <dl class="article-side-meta">
+        <div class="article-side-meta-row">
+          <dt class="bilingual">
+            <span class="en">Published</span>
+            <span class="ko">게시일</span>
+          </dt>
+          <dd class="bilingual">
+            <span class="en">{{ page.date | date: "%B %d, %Y" }}</span>
+            <span class="ko">{{ page.date | date: "%Y-%m-%d" }}</span>
+          </dd>
+        </div>
+        {% if article_category %}
+          <div class="article-side-meta-row">
+            <dt class="bilingual">
+              <span class="en">Category</span>
+              <span class="ko">카테고리</span>
+            </dt>
+            <dd class="bilingual">
+              <span class="en">{{ article_category.en }}</span>
+              <span class="ko">{{ article_category.kr }}</span>
+            </dd>
+          </div>
+        {% endif %}
+      </dl>
+    </div>
+
+    <div class="panel article-side-panel">
+      <p class="article-side-kicker bilingual">
+        <span class="en">More to read</span>
+        <span class="ko">함께 보기</span>
+      </p>
+      <div class="article-side-links">
+        {% if recent_posts.size > 0 %}
+          {% for post in recent_posts limit: 3 %}
+            <a class="article-side-link" href="{{ post.url | relative_url }}">
+              <span class="bilingual">
+                <span class="en">{{ post.title }}</span>
+                {% if post.title_kr %}
+                  <span class="ko">{{ post.title_kr }}</span>
+                {% endif %}
+              </span>
+            </a>
+          {% endfor %}
+        {% else %}
+          <p class="empty-state bilingual">
+            <span class="en">More posts will show up here as the archive grows.</span>
+            <span class="ko">글이 더 쌓이면 이곳에 함께 볼 글이 표시됩니다.</span>
+          </p>
+        {% endif %}
+      </div>
+    </div>
+  </aside>
 </article>

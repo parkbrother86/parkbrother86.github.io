@@ -58,15 +58,21 @@
                 <span class="ko">홈</span>
               </span>
             </a>
-            <details class="nav-dropdown {% if current_category_slug %}is-active{% endif %}">
-              <summary>
+            <div class="nav-dropdown {% if current_category_slug %}is-active{% endif %}">
+              <button
+                class="nav-dropdown-trigger"
+                type="button"
+                data-nav-toggle
+                aria-expanded="false"
+                aria-controls="site-category-menu"
+                aria-haspopup="true">
                 <span class="bilingual inline nav-label">
                   <span class="en">Categories</span>
                   <span class="ko">카테고리</span>
                 </span>
                 <span class="nav-dropdown-caret" aria-hidden="true">+</span>
-              </summary>
-              <div class="nav-dropdown-panel">
+              </button>
+              <div class="nav-dropdown-panel" id="site-category-menu" hidden>
                 <p class="nav-dropdown-heading bilingual">
                   <span class="en">Browse writing tracks</span>
                   <span class="ko">연재 카테고리 보기</span>
@@ -83,7 +89,7 @@
                   {% endfor %}
                 </div>
               </div>
-            </details>
+            </div>
           </nav>
           <div class="language-switcher" role="group" aria-label="Language selector">
             <button class="language-button" type="button" data-language-switch="en" aria-pressed="true">EN</button>
@@ -140,10 +146,70 @@
           });
         });
 
+        navDropdowns.forEach(function (dropdown) {
+          var trigger = dropdown.querySelector("[data-nav-toggle]");
+          var panel = dropdown.querySelector(".nav-dropdown-panel");
+
+          function setOpen(isOpen) {
+            dropdown.classList.toggle("is-open", isOpen);
+
+            if (trigger) {
+              trigger.setAttribute("aria-expanded", isOpen ? "true" : "false");
+            }
+
+            if (panel) {
+              panel.hidden = !isOpen;
+            }
+          }
+
+          setOpen(false);
+
+          if (trigger) {
+            trigger.addEventListener("click", function (event) {
+              event.preventDefault();
+
+              var shouldOpen = !dropdown.classList.contains("is-open");
+
+              navDropdowns.forEach(function (item) {
+                if (item !== dropdown) {
+                  var itemTrigger = item.querySelector("[data-nav-toggle]");
+                  var itemPanel = item.querySelector(".nav-dropdown-panel");
+                  item.classList.remove("is-open");
+                  if (itemTrigger) {
+                    itemTrigger.setAttribute("aria-expanded", "false");
+                  }
+                  if (itemPanel) {
+                    itemPanel.hidden = true;
+                  }
+                }
+              });
+
+              setOpen(shouldOpen);
+            });
+          }
+
+          dropdown.querySelectorAll(".nav-dropdown-link").forEach(function (link) {
+            link.addEventListener("click", function () {
+              setOpen(false);
+            });
+          });
+        });
+
         document.addEventListener("click", function (event) {
           navDropdowns.forEach(function (dropdown) {
             if (!dropdown.contains(event.target)) {
-              dropdown.removeAttribute("open");
+              dropdown.classList.remove("is-open");
+
+              var trigger = dropdown.querySelector("[data-nav-toggle]");
+              var panel = dropdown.querySelector(".nav-dropdown-panel");
+
+              if (trigger) {
+                trigger.setAttribute("aria-expanded", "false");
+              }
+
+              if (panel) {
+                panel.hidden = true;
+              }
             }
           });
         });
@@ -151,7 +217,18 @@
         document.addEventListener("keydown", function (event) {
           if (event.key === "Escape") {
             navDropdowns.forEach(function (dropdown) {
-              dropdown.removeAttribute("open");
+              dropdown.classList.remove("is-open");
+
+              var trigger = dropdown.querySelector("[data-nav-toggle]");
+              var panel = dropdown.querySelector(".nav-dropdown-panel");
+
+              if (trigger) {
+                trigger.setAttribute("aria-expanded", "false");
+              }
+
+              if (panel) {
+                panel.hidden = true;
+              }
             });
           }
         });
