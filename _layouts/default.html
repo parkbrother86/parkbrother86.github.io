@@ -16,10 +16,25 @@
   <body>
     <div class="site-shell">
       <header class="site-header">
-        <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+        <a class="site-title" href="{{ '/' | relative_url }}">
+          <span class="bilingual inline">
+            <span class="en">Park Brother Blog</span>
+            <span class="ko">박형제 블로그</span>
+          </span>
+        </a>
         <nav class="site-nav">
-          <a href="{{ '/' | relative_url }}">Home</a>
-          <a href="{{ '/about/' | relative_url }}">About</a>
+          <a href="{{ '/' | relative_url }}">
+            <span class="bilingual inline nav-label">
+              <span class="en">Home</span>
+              <span class="ko">홈</span>
+            </span>
+          </a>
+          <a href="{{ '/about/' | relative_url }}">
+            <span class="bilingual inline nav-label">
+              <span class="en">About</span>
+              <span class="ko">소개</span>
+            </span>
+          </a>
         </nav>
       </header>
 
@@ -28,7 +43,10 @@
       </main>
 
       <footer class="site-footer">
-        <p>{{ site.description }}</p>
+        <p class="bilingual">
+          <span class="en">Notes, posts, and updates from Park Brother.</span>
+          <span class="ko">박형제의 글과 기록을 담는 공간입니다.</span>
+        </p>
       </footer>
     </div>
   </body>

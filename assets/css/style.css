@@ -67,6 +67,25 @@ a {
   text-decoration: none;
 }
 
+.bilingual {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.bilingual.inline {
+  display: inline-flex;
+}
+
+.bilingual .en {
+  font-weight: 700;
+}
+
+.bilingual .ko {
+  color: var(--muted);
+  font-size: 0.95em;
+}
+
 .site-nav {
   display: flex;
   gap: 1rem;
@@ -76,6 +95,14 @@ a {
 .site-nav a {
   text-decoration: none;
   color: var(--muted);
+}
+
+.nav-label .en {
+  font-size: 0.95rem;
+}
+
+.nav-label .ko {
+  font-size: 0.82rem;
 }
 
 .site-nav a:hover,
@@ -119,6 +146,21 @@ a {
   font-size: clamp(2.2rem, 5vw, 4rem);
 }
 
+.hero-title .en,
+.page-title .en,
+.section-title .en,
+.post-title .en {
+  color: var(--text);
+}
+
+.hero-title .ko,
+.page-title .ko,
+.section-title .ko,
+.post-title .ko {
+  font-size: 0.6em;
+  font-weight: 600;
+}
+
 .hero p,
 .page-intro,
 .post-meta,
@@ -142,6 +184,16 @@ a {
   border-radius: 999px;
   text-decoration: none;
   font-weight: 700;
+}
+
+.button .bilingual {
+  align-items: center;
+  text-align: center;
+}
+
+.button .ko {
+  color: inherit;
+  opacity: 0.92;
 }
 
 .button.primary {
@@ -171,6 +223,14 @@ a {
 
 .post-card h3 {
   margin: 0 0 0.35rem;
+}
+
+.post-card-title {
+  margin: 0 0 0.35rem;
+}
+
+.post-card-title .ko {
+  font-size: 0.85em;
 }
 
 .post-link {
@@ -203,6 +263,10 @@ a {
   margin-top: 1.5rem;
   padding: 1rem 1.4rem;
   color: var(--muted);
+}
+
+.site-footer p {
+  margin: 0;
 }
 
 code {
