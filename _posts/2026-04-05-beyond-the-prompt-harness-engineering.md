@@ -1,11 +1,11 @@
 ---
-title: Beyond the Prompt: Harness Engineering, or Skill Routing
-title_kr: 프롬프트를 넘어서: 하네스 엔지니어링, 다른 말로는 스킬 라우팅
+title: "Beyond the Prompt: Harness Engineering, or Skill Routing"
+title_kr: "프롬프트를 넘어서: 하네스 엔지니어링, 다른 말로는 스킬 라우팅"
 date: 2026-04-05 12:00:00 +0800
 categories:
   - utility-pipeline
-excerpt_en: On a solo game server project, I learned that using AI well depends less on clever prompts and more on building task-specific skills, workflows, and guardrails.
-excerpt_kr: 혼자 게임 서버를 만들면서 깨달은 건, AI를 잘 쓰는 핵심이 재치 있는 프롬프트보다 작업별 스킬, 워크플로우, 가드레일을 만드는 데 있다는 점이다.
+excerpt_en: "On a solo game server project, I learned that using AI well depends less on clever prompts and more on building task-specific skills, workflows, and guardrails."
+excerpt_kr: "혼자 게임 서버를 만들면서 깨달은 건, AI를 잘 쓰는 핵심이 재치 있는 프롬프트보다 작업별 스킬, 워크플로우, 가드레일을 만드는 데 있다는 점이다."
 ---
 
 <div class="bilingual">
