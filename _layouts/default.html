@@ -30,72 +30,85 @@
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   </head>
   <body class="{% if page.layout %}page-{{ page.layout | slugify }}{% endif %}">
-    <div class="page-aura aura-one" aria-hidden="true"></div>
-    <div class="page-aura aura-two" aria-hidden="true"></div>
     <div class="site-shell">
       <header class="site-header">
-        <div class="site-brand">
-          <span class="site-kicker bilingual">
-            <span class="en">Engineering Notes</span>
-            <span class="ko">엔지니어링 노트</span>
-          </span>
-          <a class="site-title" href="{{ '/' | relative_url }}">
-            <span class="bilingual inline">
-              <span class="en">geyopa blog</span>
-              <span class="ko">게요파 블로그</span>
+        {% assign current_category_slug = page.category_slug %}
+        {% unless current_category_slug %}
+          {% assign current_category_slug = page.categories | first %}
+        {% endunless %}
+        <div class="site-header-row">
+          <div class="site-identity">
+            <span class="site-eyebrow bilingual">
+              <span class="en">docs / engineering notes</span>
+              <span class="ko">docs / 엔지니어링 노트</span>
             </span>
-          </a>
-        </div>
-        <div class="site-header-actions">
-          {% assign current_category_slug = page.category_slug %}
-          {% unless current_category_slug %}
-            {% assign current_category_slug = page.categories | first %}
-          {% endunless %}
-          <nav class="site-nav">
-            <a class="{% if page.url == '/' or page.url == '/index.html' %}is-active{% endif %}" href="{{ '/' | relative_url }}">
-              <span class="bilingual inline nav-label">
-                <span class="en">Home</span>
-                <span class="ko">홈</span>
+            <a class="site-title" href="{{ '/' | relative_url }}">
+              <span class="bilingual inline">
+                <span class="en">geyopa blog</span>
+                <span class="ko">게요파 블로그</span>
               </span>
             </a>
-            <div class="nav-dropdown {% if current_category_slug %}is-active{% endif %}">
-              <button
-                class="nav-dropdown-trigger"
-                type="button"
-                data-nav-toggle
-                aria-expanded="false"
-                aria-controls="site-category-menu"
-                aria-haspopup="true">
+          </div>
+
+          <div class="site-toolbar">
+            <nav class="site-nav">
+              <a class="{% if page.url == '/' or page.url == '/index.html' %}is-active{% endif %}" href="{{ '/' | relative_url }}">
                 <span class="bilingual inline nav-label">
-                  <span class="en">Categories</span>
-                  <span class="ko">카테고리</span>
+                  <span class="en">Home</span>
+                  <span class="ko">홈</span>
                 </span>
-                <span class="nav-dropdown-caret" aria-hidden="true">+</span>
-              </button>
-              <div class="nav-dropdown-panel" id="site-category-menu" hidden>
-                <p class="nav-dropdown-heading bilingual">
-                  <span class="en">Browse writing tracks</span>
-                  <span class="ko">연재 카테고리 보기</span>
-                </p>
-                <div class="nav-dropdown-grid">
-                  {% for category in site.data.categories %}
-                    <a class="nav-dropdown-link {% if current_category_slug == category.slug %}is-active{% endif %}" href="{{ category.path | relative_url }}">
-                      <span class="nav-dropdown-index">{{ forloop.index | prepend: '0' }}</span>
-                      <span class="bilingual">
-                        <span class="en">{{ category.en }}</span>
-                        <span class="ko">{{ category.kr }}</span>
-                      </span>
-                    </a>
-                  {% endfor %}
+              </a>
+              <a class="{% if page.url == '/about/' %}is-active{% endif %}" href="{{ '/about/' | relative_url }}">
+                <span class="bilingual inline nav-label">
+                  <span class="en">About</span>
+                  <span class="ko">소개</span>
+                </span>
+              </a>
+              <div class="nav-dropdown {% if current_category_slug %}is-active{% endif %}">
+                <button
+                  class="nav-dropdown-trigger"
+                  type="button"
+                  data-nav-toggle
+                  aria-expanded="false"
+                  aria-controls="site-category-menu"
+                  aria-haspopup="true">
+                  <span class="bilingual inline nav-label">
+                    <span class="en">Index</span>
+                    <span class="ko">색인</span>
+                  </span>
+                  <span class="nav-dropdown-caret" aria-hidden="true">+</span>
+                </button>
+                <div class="nav-dropdown-panel" id="site-category-menu" hidden>
+                  <p class="nav-dropdown-heading bilingual">
+                    <span class="en">Browse writing tracks</span>
+                    <span class="ko">글 트랙 둘러보기</span>
+                  </p>
+                  <div class="nav-dropdown-grid">
+                    {% for category in site.data.categories %}
+                      <a class="nav-dropdown-link {% if current_category_slug == category.slug %}is-active{% endif %}" href="{{ category.path | relative_url }}">
+                        <span class="nav-dropdown-index">{{ forloop.index | prepend: '0' }}</span>
+                        <span class="bilingual">
+                          <span class="en">{{ category.en }}</span>
+                          <span class="ko">{{ category.kr }}</span>
+                        </span>
+                      </a>
+                    {% endfor %}
+                  </div>
                 </div>
               </div>
+            </nav>
+
+            <div class="language-switcher" role="group" aria-label="Language selector">
+              <button class="language-button" type="button" data-language-switch="en" aria-pressed="true">EN</button>
+              <button class="language-button" type="button" data-language-switch="kr" aria-pressed="false">KR</button>
             </div>
-          </nav>
-          <div class="language-switcher" role="group" aria-label="Language selector">
-            <button class="language-button" type="button" data-language-switch="en" aria-pressed="true">EN</button>
-            <button class="language-button" type="button" data-language-switch="kr" aria-pressed="false">KR</button>
           </div>
         </div>
+
+        <p class="site-summary bilingual">
+          <span class="en">A personal index of architecture notes, debugging logs, toolsmithing write-ups, and developer workflow experiments.</span>
+          <span class="ko">아키텍처 노트, 디버깅 로그, 도구 제작 기록, 개발 워크플로우 실험을 정리하는 개인 문서 인덱스입니다.</span>
+        </p>
       </header>
 
       <main class="site-main">
@@ -103,18 +116,14 @@
       </main>
 
       <footer class="site-footer">
-        <div class="footer-copy">
-          <p class="bilingual">
-            <span class="en">Architecture notes, build logs, and technical writing from geyopa.</span>
-            <span class="ko">게요파의 아키텍처 노트, 빌드 로그, 기술 글을 모아둔 공간입니다.</span>
-          </p>
-        </div>
-        <div class="footer-meta">
-          <p class="bilingual">
-            <span class="en">Published through Jekyll and GitHub Pages.</span>
-            <span class="ko">Jekyll과 GitHub Pages를 통해 배포합니다.</span>
-          </p>
-        </div>
+        <p class="footer-copy bilingual">
+          <span class="en">Architecture notes, build logs, and technical writing from geyopa.</span>
+          <span class="ko">게요파의 아키텍처 노트, 빌드 로그, 기술 문서를 모아둔 공간입니다.</span>
+        </p>
+        <p class="footer-meta bilingual">
+          <span class="en">Published with Jekyll and GitHub Pages.</span>
+          <span class="ko">Jekyll과 GitHub Pages로 배포합니다.</span>
+        </p>
       </footer>
     </div>
     <script>

@@ -4,12 +4,12 @@ layout: default
 
 {% assign category_posts = site.categories[page.category_slug] %}
 
-<section class="panel category-archive">
-  <header class="category-archive-head">
-    <span class="eyebrow bilingual">
-      <span class="en">Category Archive</span>
-      <span class="ko">카테고리 아카이브</span>
-    </span>
+<section class="doc-page doc-category">
+  <header class="doc-page-head">
+    <p class="page-kicker bilingual">
+      <span class="en">Track Archive</span>
+      <span class="ko">트랙 아카이브</span>
+    </p>
     <h1 class="page-title bilingual">
       <span class="en">{{ page.category_en | default: page.title }}</span>
       <span class="ko">{{ page.category_kr }}</span>
@@ -18,47 +18,64 @@ layout: default
       <span class="en">{{ page.category_intro_en }}</span>
       <span class="ko">{{ page.category_intro_kr }}</span>
     </p>
+    <p class="page-caption bilingual">
+      <span class="en">{{ category_posts | size }} entries indexed in this track.</span>
+      <span class="ko">이 트랙에 {{ category_posts | size }}개의 글이 정리되어 있습니다.</span>
+    </p>
   </header>
 
-  {% if category_posts and category_posts.size > 0 %}
-    <div class="archive-list">
-      {% for post in category_posts %}
-        <article class="archive-item">
-          <div class="archive-item-head">
-            <span class="archive-date bilingual">
-              <span class="en">{{ post.date | date: "%B %d, %Y" }}</span>
-              <span class="ko">{{ post.date | date: "%Y-%m-%d" }}</span>
-            </span>
-          </div>
-          <div class="archive-item-body">
-            <h2 class="archive-title">
-              <a href="{{ post.url | relative_url }}">
-                <span class="bilingual">
-                  <span class="en">{{ post.title }}</span>
-                  {% if post.title_kr %}
-                    <span class="ko">{{ post.title_kr }}</span>
-                  {% endif %}
-                </span>
-              </a>
-            </h2>
-            <p class="archive-excerpt bilingual">
-              <span class="en">{{ post.excerpt_en | default: post.excerpt | strip_html | strip_newlines }}</span>
-              <span class="ko">{{ post.excerpt_kr | default: post.excerpt | strip_html | strip_newlines }}</span>
-            </p>
-            <a class="archive-read-more bilingual inline" href="{{ post.url | relative_url }}">
-              <span class="en">Read post</span>
-              <span class="ko">글 읽기</span>
-            </a>
-          </div>
-        </article>
-      {% endfor %}
+  <section class="doc-section">
+    <div class="section-header">
+      <div>
+        <p class="section-kicker bilingual">
+          <span class="en">Entries</span>
+          <span class="ko">엔트리</span>
+        </p>
+        <h2 class="section-title bilingual">
+          <span class="en">Indexed posts</span>
+          <span class="ko">정리된 글 목록</span>
+        </h2>
+      </div>
     </div>
-  {% else %}
-    <div class="archive-empty">
+
+    {% if category_posts and category_posts.size > 0 %}
+      <div class="doc-link-list archive-list">
+        {% for post in category_posts %}
+          <article class="doc-link-row archive-row">
+            <div class="doc-link-date bilingual">
+              <span class="en">{{ post.date | date: "%Y-%m-%d" }}</span>
+              <span class="ko">{{ post.date | date: "%Y-%m-%d" }}</span>
+            </div>
+            <div class="doc-link-body">
+              <h2 class="doc-link-title">
+                <a href="{{ post.url | relative_url }}">
+                  <span class="bilingual">
+                    <span class="en">{{ post.title }}</span>
+                    {% if post.title_kr %}
+                      <span class="ko">{{ post.title_kr }}</span>
+                    {% endif %}
+                  </span>
+                </a>
+              </h2>
+              <p class="doc-link-excerpt bilingual">
+                <span class="en">{{ post.excerpt_en | default: post.excerpt | strip_html | strip_newlines }}</span>
+                <span class="ko">{{ post.excerpt_kr | default: post.excerpt | strip_html | strip_newlines }}</span>
+              </p>
+            </div>
+            <div class="archive-row-action">
+              <a class="inline-link bilingual inline" href="{{ post.url | relative_url }}">
+                <span class="en">Read entry</span>
+                <span class="ko">글 읽기</span>
+              </a>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}
       <p class="empty-state bilingual">
         <span class="en">No posts have been published in this category yet.</span>
         <span class="ko">이 카테고리에는 아직 글이 없습니다.</span>
       </p>
-    </div>
-  {% endif %}
+    {% endif %}
+  </section>
 </section>

@@ -8,104 +8,114 @@ layout: default
 {% assign article_word_count = page.content | strip_html | number_of_words %}
 {% assign article_read_minutes = article_word_count | plus: 219 | divided_by: 220 %}
 
-<article class="article-shell article-shell-reading">
-  <div class="article-main">
-    <header class="article-hero article-hero-reading">
-      <span class="eyebrow bilingual">
-        <span class="en">Journal Entry</span>
-        <span class="ko">기록</span>
+<article class="doc-page doc-article">
+  <header class="doc-page-head doc-article-head">
+    <p class="page-kicker bilingual">
+      <span class="en">Entry</span>
+      <span class="ko">기록</span>
+    </p>
+
+    <div class="doc-meta-line">
+      <span class="doc-meta-item bilingual inline">
+        <span class="en">Published {{ page.date | date: "%Y-%m-%d" }}</span>
+        <span class="ko">게시일 {{ page.date | date: "%Y-%m-%d" }}</span>
       </span>
 
-      <h1 class="post-title bilingual">
-        <span class="en">{{ page.title }}</span>
-        {% if page.title_kr %}
-          <span class="ko">{{ page.title_kr }}</span>
-        {% endif %}
-      </h1>
-
-      {% if page.excerpt_en or page.excerpt_kr %}
-        <p class="article-deck bilingual">
-          <span class="en">{{ page.excerpt_en | default: page.excerpt | strip_html | strip_newlines }}</span>
-          <span class="ko">{{ page.excerpt_kr | default: page.excerpt | strip_html | strip_newlines }}</span>
-        </p>
+      {% if article_category %}
+        <a class="doc-meta-item doc-meta-link bilingual inline" href="{{ article_category.path | relative_url }}">
+          <span class="en">Track {{ article_category.en }}</span>
+          <span class="ko">트랙 {{ article_category.kr }}</span>
+        </a>
       {% endif %}
 
-      <div class="article-meta-strip">
-        <div class="article-meta-chip">
-          <span class="article-meta-label bilingual">
-            <span class="en">Published</span>
-            <span class="ko">게시일</span>
-          </span>
-          <span class="article-meta-value bilingual">
-            <span class="en">{{ page.date | date: "%B %d, %Y" }}</span>
-            <span class="ko">{{ page.date | date: "%Y-%m-%d" }}</span>
-          </span>
-        </div>
+      <span class="doc-meta-item bilingual inline">
+        <span class="en">{{ article_read_minutes }} min read</span>
+        <span class="ko">약 {{ article_read_minutes }}분</span>
+      </span>
+    </div>
 
-        {% if article_category %}
-          <div class="article-meta-chip">
-            <span class="article-meta-label bilingual">
-              <span class="en">Category</span>
-              <span class="ko">카테고리</span>
-            </span>
-            <a class="article-meta-link bilingual" href="{{ article_category.path | relative_url }}">
-              <span class="en">{{ article_category.en }}</span>
-              <span class="ko">{{ article_category.kr }}</span>
-            </a>
-          </div>
-        {% endif %}
+    <h1 class="page-title post-title bilingual">
+      <span class="en">{{ page.title }}</span>
+      {% if page.title_kr %}
+        <span class="ko">{{ page.title_kr }}</span>
+      {% endif %}
+    </h1>
 
-        <div class="article-meta-chip">
-          <span class="article-meta-label bilingual">
-            <span class="en">Length</span>
-            <span class="ko">분량</span>
-          </span>
-          <span class="article-meta-value bilingual">
-            <span class="en">{{ article_read_minutes }} min read</span>
-            <span class="ko">약 {{ article_read_minutes }}분</span>
-          </span>
-        </div>
+    {% if page.excerpt_en or page.excerpt_kr %}
+      <p class="page-intro article-intro bilingual">
+        <span class="en">{{ page.excerpt_en | default: page.excerpt | strip_html | strip_newlines }}</span>
+        <span class="ko">{{ page.excerpt_kr | default: page.excerpt | strip_html | strip_newlines }}</span>
+      </p>
+    {% endif %}
+  </header>
+
+  <div class="doc-prose">
+    {{ content }}
+  </div>
+
+  <section class="doc-section article-more">
+    <div class="section-header">
+      <div>
+        <p class="section-kicker bilingual">
+          <span class="en">Archive</span>
+          <span class="ko">아카이브</span>
+        </p>
+        <h2 class="section-title bilingual">
+          <span class="en">Continue reading</span>
+          <span class="ko">이어서 읽기</span>
+        </h2>
       </div>
 
       {% if article_category %}
-        <a class="article-track-link bilingual inline" href="{{ article_category.path | relative_url }}">
-          <span class="en">Browse more from {{ article_category.en }}</span>
-          <span class="ko">{{ article_category.kr }}에서 더 보기</span>
+        <a class="inline-link bilingual inline" href="{{ article_category.path | relative_url }}">
+          <span class="en">Open {{ article_category.en }}</span>
+          <span class="ko">{{ article_category.kr }} 열기</span>
         </a>
       {% endif %}
-    </header>
-
-    <div class="panel post-body">
-      {{ content }}
     </div>
 
-    <section class="article-after">
-      <div class="panel article-after-panel">
-        <p class="article-after-kicker bilingual">
-          <span class="en">Continue Reading</span>
-          <span class="ko">이어서 읽기</span>
+    <div class="doc-link-list">
+      {% if recent_posts.size > 0 %}
+        {% for post in recent_posts limit: 3 %}
+          {% assign related_category_slug = post.categories | first %}
+          {% assign related_category = site.data.categories | where: "slug", related_category_slug | first %}
+          <article class="doc-link-row">
+            <div class="doc-link-date bilingual">
+              <span class="en">{{ post.date | date: "%Y-%m-%d" }}</span>
+              <span class="ko">{{ post.date | date: "%Y-%m-%d" }}</span>
+            </div>
+            <div class="doc-link-body">
+              <div class="doc-link-meta">
+                {% if related_category %}
+                  <a class="doc-tag bilingual inline" href="{{ related_category.path | relative_url }}">
+                    <span class="en">{{ related_category.en }}</span>
+                    <span class="ko">{{ related_category.kr }}</span>
+                  </a>
+                {% endif %}
+              </div>
+              <h3 class="doc-link-title">
+                <a href="{{ post.url | relative_url }}">
+                  <span class="bilingual">
+                    <span class="en">{{ post.title }}</span>
+                    {% if post.title_kr %}
+                      <span class="ko">{{ post.title_kr }}</span>
+                    {% endif %}
+                  </span>
+                </a>
+              </h3>
+              <p class="doc-link-excerpt bilingual">
+                <span class="en">{{ post.excerpt_en | default: post.excerpt | strip_html | strip_newlines }}</span>
+                <span class="ko">{{ post.excerpt_kr | default: post.excerpt | strip_html | strip_newlines }}</span>
+              </p>
+            </div>
+          </article>
+        {% endfor %}
+      {% else %}
+        <p class="empty-state bilingual">
+          <span class="en">More posts will show up here as the archive grows.</span>
+          <span class="ko">글이 쌓이면 여기에 다른 글도 나타납니다.</span>
         </p>
-
-        <div class="article-after-links">
-          {% if recent_posts.size > 0 %}
-            {% for post in recent_posts limit: 3 %}
-              <a class="article-after-link" href="{{ post.url | relative_url }}">
-                <span class="bilingual">
-                  <span class="en">{{ post.title }}</span>
-                  {% if post.title_kr %}
-                    <span class="ko">{{ post.title_kr }}</span>
-                  {% endif %}
-                </span>
-              </a>
-            {% endfor %}
-          {% else %}
-            <p class="empty-state bilingual">
-              <span class="en">More posts will show up here as the archive grows.</span>
-              <span class="ko">글이 쌓이면 여기에 다른 글도 나타납니다.</span>
-            </p>
-          {% endif %}
-        </div>
-      </div>
-    </section>
-  </div>
+      {% endif %}
+    </div>
+  </section>
 </article>

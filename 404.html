@@ -3,18 +3,25 @@ title: Page Not Found
 permalink: /404.html
 ---
 
-<section class="panel">
-  <h1 class="page-title">404</h1>
-  <p class="page-intro bilingual">
-    <span class="en">The page you are looking for could not be found.</span>
-    <span class="ko">요청하신 페이지를 찾을 수 없습니다.</span>
-  </p>
-  <p>
-    <a class="button secondary" href="{{ '/' | relative_url }}">
-      <span class="bilingual">
-        <span class="en">Back to Home</span>
-        <span class="ko">홈으로 돌아가기</span>
-      </span>
-    </a>
-  </p>
+<section class="doc-page">
+  <header class="doc-page-head">
+    <p class="page-kicker bilingual">
+      <span class="en">Missing Page</span>
+      <span class="ko">누락된 페이지</span>
+    </p>
+    <h1 class="page-title">404</h1>
+    <p class="page-intro bilingual">
+      <span class="en">The page you are looking for could not be found.</span>
+      <span class="ko">요청하신 페이지를 찾을 수 없습니다.</span>
+    </p>
+  </header>
+
+  <section class="doc-section">
+    <p class="doc-body-text">
+      <a class="inline-link bilingual inline" href="{{ '/' | relative_url }}">
+        <span class="en">Back to home index</span>
+        <span class="ko">홈 색인으로 돌아가기</span>
+      </a>
+    </p>
+  </section>
 </section>
