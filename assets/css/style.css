@@ -13,8 +13,8 @@
   --radius-xl: 22px;
   --radius-lg: 16px;
   --radius-md: 12px;
-  --article-column-width: 860px;
-  --article-text-width: 74ch;
+  --article-column-width: 980px;
+  --article-text-width: 82ch;
   --article-gap: clamp(1rem, 2vw, 1.4rem);
 }
 
@@ -1221,7 +1221,7 @@ pre code {
 
 @media (max-width: 1080px) {
   .article-main {
-    width: min(100%, 52rem);
+    width: min(100%, 58rem);
   }
 
 }
