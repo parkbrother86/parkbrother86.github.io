@@ -121,7 +121,7 @@ a {
 
 .site-title {
   font-family: "IBM Plex Mono", monospace;
-  font-size: clamp(1.7rem, 4vw, 2.3rem);
+  font-size: clamp(1.5rem, 3vw, 1.95rem);
   font-weight: 700;
   line-height: 1.05;
   letter-spacing: -0.04em;
@@ -132,7 +132,7 @@ a {
   margin: 0;
   max-width: 76ch;
   color: var(--muted);
-  font-size: 0.98rem;
+  font-size: 0.94rem;
 }
 
 .bilingual {
@@ -392,7 +392,7 @@ html[data-language="kr"] .bilingual > .en {
 .section-kicker {
   margin: 0;
   color: var(--accent-strong);
-  font-size: 0.78rem;
+  font-size: 0.74rem;
   font-weight: 700;
 }
 
@@ -406,7 +406,7 @@ html[data-language="kr"] .bilingual > .en {
 }
 
 .page-title {
-  font-size: clamp(2rem, 4vw, 3.1rem);
+  font-size: clamp(1.65rem, 3vw, 2.35rem);
   font-weight: 700;
   max-width: 18ch;
   letter-spacing: -0.03em;
@@ -431,13 +431,13 @@ html[data-language="kr"] .bilingual > .en {
 .page-intro {
   margin: 0;
   max-width: 76ch;
-  font-size: 1.02rem;
+  font-size: 0.96rem;
 }
 
 .page-caption,
 .section-note {
   margin: 0;
-  font-size: 0.92rem;
+  font-size: 0.88rem;
 }
 
 .doc-stat-grid {
@@ -464,7 +464,7 @@ html[data-language="kr"] .bilingual > .en {
 
 .doc-stat-value {
   font-family: "IBM Plex Mono", monospace;
-  font-size: 1.3rem;
+  font-size: 1.12rem;
   font-weight: 700;
 }
 
@@ -490,7 +490,7 @@ html[data-language="kr"] .bilingual > .en {
 }
 
 .section-title {
-  font-size: clamp(1.35rem, 2.3vw, 1.9rem);
+  font-size: clamp(1.1rem, 1.8vw, 1.45rem);
   font-weight: 700;
 }
 
@@ -541,7 +541,7 @@ html[data-language="kr"] .bilingual > .en {
 
 .doc-track-link .en {
   color: var(--text);
-  font-size: 1.02rem;
+  font-size: 0.94rem;
   font-weight: 700;
   line-height: 1.28;
 }
@@ -552,14 +552,14 @@ html[data-language="kr"] .bilingual > .en {
 
 .doc-entry-link {
   display: block;
-  font-size: 1.02rem;
+  font-size: 0.96rem;
   font-weight: 700;
   line-height: 1.4;
 }
 
 .doc-entry-excerpt {
   margin: 0.38rem 0 0;
-  font-size: 0.94rem;
+  font-size: 0.9rem;
   line-height: 1.65;
   max-width: 62ch;
 }
@@ -628,7 +628,7 @@ html[data-language="kr"] .bilingual > .en {
 
 .entry-title,
 .doc-link-title {
-  font-size: clamp(1.12rem, 2vw, 1.45rem);
+  font-size: clamp(0.98rem, 1.6vw, 1.18rem);
   font-weight: 700;
   letter-spacing: -0.02em;
 }
@@ -636,7 +636,7 @@ html[data-language="kr"] .bilingual > .en {
 .entry-excerpt,
 .doc-link-excerpt {
   margin: 0;
-  font-size: 0.98rem;
+  font-size: 0.92rem;
   line-height: 1.72;
   max-width: 72ch;
 }
@@ -652,7 +652,7 @@ html[data-language="kr"] .bilingual > .en {
   flex-wrap: wrap;
   gap: 0.7rem 1rem;
   color: var(--muted);
-  font-size: 0.78rem;
+  font-size: 0.74rem;
   font-weight: 700;
 }
 
@@ -668,7 +668,7 @@ html[data-language="kr"] .bilingual > .en {
 
 .post-title {
   max-width: 16ch;
-  font-size: clamp(2.2rem, 4.3vw, 3.7rem);
+  font-size: clamp(1.85rem, 3.5vw, 2.85rem);
 }
 
 .article-intro {
@@ -696,13 +696,13 @@ html[data-language="kr"] .bilingual > .en {
 
 .doc-prose p,
 .doc-prose li {
-  font-size: 1.05rem;
+  font-size: 1rem;
 }
 
 .doc-prose h2 {
   margin-top: 2.6rem;
   margin-bottom: 0.85rem;
-  font-size: clamp(1.45rem, 2.7vw, 2rem);
+  font-size: clamp(1.22rem, 2.1vw, 1.6rem);
   font-weight: 700;
   letter-spacing: -0.02em;
 }
@@ -710,7 +710,7 @@ html[data-language="kr"] .bilingual > .en {
 .doc-prose h3 {
   margin-top: 1.8rem;
   margin-bottom: 0.55rem;
-  font-size: 1.12rem;
+  font-size: 1rem;
   font-weight: 700;
 }
 
@@ -963,7 +963,7 @@ pre code {
 
   .post-title {
     max-width: none;
-    font-size: 2rem;
+    font-size: 1.75rem;
   }
 
   .doc-prose table,
