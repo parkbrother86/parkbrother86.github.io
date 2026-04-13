@@ -1,14 +1,14 @@
 # parkbrother86.github.io
 
-GitHub Pages에 바로 올릴 수 있는 Jekyll 기본 구조입니다.
+GitHub Pages에서 `Minimal Mistakes` 원격 테마를 사용하는 Jekyll 블로그입니다.
 
 ## 포함 내용
 
-- `_config.yml` 기본 사이트 설정
-- `_layouts/default.html` 공통 레이아웃
-- `assets/css/style.css` 기본 스타일
-- `_posts/` 샘플 블로그 포스트
-- `about.md`, `404.html` 기본 페이지
+- `remote_theme: "mmistakes/minimal-mistakes"` 기반 설정
+- `assets/css/main.scss`와 `_sass/minimal-mistakes/_custom.scss` 커스텀 스타일
+- `_includes/head/custom.html`, `_includes/footer/custom.html` 이중언어 토글 보조 코드
+- `_posts/` 기술 블로그 포스트
+- `about.md`, `topics.md`, `categories/` 아카이브 페이지
 
 ## 로컬 실행
 

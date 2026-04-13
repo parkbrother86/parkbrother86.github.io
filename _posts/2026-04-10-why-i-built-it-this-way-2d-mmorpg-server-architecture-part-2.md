@@ -4,6 +4,7 @@ title_kr: "왜 이렇게 만들었나: 2D MMORPG 서버 아키텍처 설계 의�
 date: 2026-04-10 12:00:00 +0800
 categories:
   - server-engineering
+excerpt: "Part 2 of the architecture log: how the server survives load, where it actually failed, why queue admission exists, why Lua DSL and OpsEngine were introduced, and what I chose to give up."
 excerpt_en: "Part 2 of the architecture log: how the server survives load, where it actually failed, why queue admission exists, why Lua DSL and OpsEngine were introduced, and what I chose to give up."
 excerpt_kr: "아키텍처 기록 2편. 서버가 부하를 어떻게 버티는지, 실제로 어디서 터졌는지, 왜 Queue Admission과 Lua DSL, OpsEngine을 넣었는지, 그리고 무엇을 의식적으로 포기했는지 정리한 글."
 ---

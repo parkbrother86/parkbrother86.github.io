@@ -4,6 +4,7 @@ title_kr: "왜 이렇게 만들었나: 2D MMORPG 서버 아키텍처 설계 의�
 date: 2026-04-09 12:00:00 +0800
 categories:
   - server-engineering
+excerpt: "A design-decision log for a 2D MMORPG server: why I chose Nakama, why a map became a match, why GAME, WORLD, and CONTROL were split, and what each decision cost."
 excerpt_en: "A design-decision log for a 2D MMORPG server: why I chose Nakama, why a map became a match, why GAME, WORLD, and CONTROL were split, and what each decision cost."
 excerpt_kr: "2D MMORPG 서버를 만들면서 왜 Nakama를 골랐고, 왜 맵을 매치로 돌렸으며, 왜 GAME, WORLD, CONTROL을 분리했는지와 그 대가를 기록한 설계 의사결정기다."
 ---

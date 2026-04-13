@@ -4,6 +4,7 @@ title_kr: "프롬프트를 넘어서: 훅, 에이전트가 무시할 수 없는 
 date: 2026-04-06 12:00:00 +0800
 categories:
   - utility-pipeline
+excerpt: "Skills tell an AI agent what procedure to follow. Hooks are what turn a critical rule from advice into something the agent physically cannot skip."
 excerpt_en: "Skills tell an AI agent what procedure to follow. Hooks are what turn a critical rule from advice into something the agent physically cannot skip."
 excerpt_kr: "스킬이 에이전트에게 절차를 알려주는 장치라면, 훅은 중요한 규칙을 조언이 아니라 에이전트가 물리적으로 건너뛸 수 없는 강제로 바꾸는 장치다."
 ---

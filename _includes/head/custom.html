@@ -1,0 +1,13 @@
+<script>
+  (function () {
+    try {
+      var savedLanguage = localStorage.getItem("preferred-language");
+      var language = savedLanguage === "kr" ? "kr" : "en";
+      document.documentElement.setAttribute("data-language", language);
+      document.documentElement.lang = language === "kr" ? "ko-KR" : "en";
+    } catch (error) {
+      document.documentElement.setAttribute("data-language", "en");
+      document.documentElement.lang = "en";
+    }
+  })();
+</script>

@@ -4,6 +4,7 @@ title_kr: "AI가 코드는 짰지만, 버그는 찾지 못했다"
 date: 2026-04-03 12:00:00 +0800
 categories:
   - server-engineering
+excerpt: "AI helped me build and review an MMORPG server, but the real bugs only surfaced after 6,216 simulation runs and more than 100 load tests."
 excerpt_en: "AI helped me build and review an MMORPG server, but the real bugs only surfaced after 6,216 simulation runs and more than 100 load tests."
 excerpt_kr: "AI는 MMORPG 서버를 만드는 데 큰 도움이 됐지만, 진짜 버그는 6,216회의 시뮬레이션과 100회가 넘는 부하 실험 끝에야 드러났다."
 ---

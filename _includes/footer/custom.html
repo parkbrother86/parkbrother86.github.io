@@ -1,0 +1,35 @@
+<div class="floating-language-switcher" role="group" aria-label="Language selector">
+  <button type="button" data-language-switch="en" aria-pressed="true">EN</button>
+  <button type="button" data-language-switch="kr" aria-pressed="false">KR</button>
+</div>
+<script>
+  (function () {
+    var root = document.documentElement;
+    var buttons = document.querySelectorAll("[data-language-switch]");
+
+    function applyLanguage(language) {
+      var safeLanguage = language === "kr" ? "kr" : "en";
+      root.setAttribute("data-language", safeLanguage);
+      root.lang = safeLanguage === "kr" ? "ko-KR" : "en";
+
+      buttons.forEach(function (button) {
+        var isActive = button.getAttribute("data-language-switch") === safeLanguage;
+        button.classList.toggle("is-active", isActive);
+        button.setAttribute("aria-pressed", isActive ? "true" : "false");
+      });
+
+      try {
+        localStorage.setItem("preferred-language", safeLanguage);
+      } catch (error) {
+      }
+    }
+
+    buttons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        applyLanguage(button.getAttribute("data-language-switch"));
+      });
+    });
+
+    applyLanguage(root.getAttribute("data-language"));
+  })();
+</script>
