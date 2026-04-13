@@ -11,7 +11,6 @@ hide_title: true
 <p class="action-row">
   <a class="buttons" href="{{ '/topics/' | relative_url }}">Browse Topics</a>
   <a class="buttons" href="{{ '/about/' | relative_url }}">About</a>
-  <a class="buttons" href="{{ '/feed.xml' | relative_url }}">RSS Feed</a>
 </p>
 
 ## Recent Posts
