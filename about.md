@@ -39,6 +39,6 @@ classes: wide
 ## Contact
 
 <div class="bilingual">
-  <p class="en">The best way to reach me is [parkbrother86@gmail.com](mailto:parkbrother86@gmail.com).</p>
-  <p class="ko">연락은 [parkbrother86@gmail.com](mailto:parkbrother86@gmail.com) 으로 받습니다.</p>
+  <p class="en">The best way to reach me is <a href="mailto:parkbrother86@gmail.com">parkbrother86@gmail.com</a>.</p>
+  <p class="ko">연락은 <a href="mailto:parkbrother86@gmail.com">parkbrother86@gmail.com</a> 으로 받습니다.</p>
 </div>
