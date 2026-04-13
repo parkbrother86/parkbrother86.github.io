@@ -3,25 +3,38 @@ title: Page Not Found
 permalink: /404.html
 ---
 
-<section class="doc-page">
-  <header class="doc-page-head">
-    <p class="page-kicker bilingual">
-      <span class="en">Missing Page</span>
-      <span class="ko">누락된 페이지</span>
-    </p>
-    <h1 class="page-title">404</h1>
-    <p class="page-intro bilingual">
-      <span class="en">The page you are looking for could not be found.</span>
-      <span class="ko">요청하신 페이지를 찾을 수 없습니다.</span>
-    </p>
+<section class="category-page">
+  <header class="page-hero">
+    <div class="page-hero-copy">
+      <p class="page-kicker bilingual">
+        <span class="en">Missing page</span>
+        <span class="ko">누락된 페이지</span>
+      </p>
+      <h1 class="page-title">404</h1>
+      <p class="page-intro bilingual">
+        <span class="en">The page you are looking for could not be found.</span>
+        <span class="ko">요청하신 페이지를 찾을 수 없습니다.</span>
+      </p>
+    </div>
+
+    <aside class="page-hero-panel">
+      <p class="panel-kicker bilingual">
+        <span class="en">Try this instead</span>
+        <span class="ko">이쪽으로 이동해 보세요</span>
+      </p>
+      <a class="primary-link bilingual inline" href="{{ '/' | relative_url }}">
+        <span class="en">Back to home</span>
+        <span class="ko">홈으로 돌아가기</span>
+      </a>
+    </aside>
   </header>
 
-  <section class="doc-section">
-    <p class="doc-body-text">
-      <a class="inline-link bilingual inline" href="{{ '/' | relative_url }}">
-        <span class="en">Back to home index</span>
-        <span class="ko">홈 색인으로 돌아가기</span>
-      </a>
-    </p>
+  <section class="content-section">
+    <article class="content-card contact-card">
+      <p class="card-text bilingual">
+        <span class="en">You can return to the front page and continue from the latest posts or browse by topic.</span>
+        <span class="ko">홈으로 돌아가서 최신 글을 보거나 주제별로 다시 탐색할 수 있습니다.</span>
+      </p>
+    </article>
   </section>
 </section>

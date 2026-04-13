@@ -26,7 +26,7 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700;800&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
     {% if jekyll.environment == "production" and site.google_analytics_id and site.google_analytics_id != "" %}
       <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics_id }}"></script>
@@ -39,38 +39,35 @@
     {% endif %}
   </head>
   <body class="{% if page.layout %}page-{{ page.layout | slugify }}{% endif %}">
+    {% assign total_posts = site.posts | size %}
+    {% assign latest_post = site.posts | first %}
     <div class="site-shell">
       <header class="site-header">
         {% assign current_category_slug = page.category_slug %}
         {% unless current_category_slug %}
           {% assign current_category_slug = page.categories | first %}
         {% endunless %}
-        <div class="site-header-row">
-          <div class="site-identity">
-            <span class="site-eyebrow bilingual">
-              <span class="en">docs / engineering notes</span>
-              <span class="ko">docs / 엔지니어링 노트</span>
-            </span>
-            <a class="site-title" href="{{ '/' | relative_url }}">
-              <span class="bilingual inline">
-                <span class="en">geyopa blog</span>
-                <span class="ko">게요파 블로그</span>
+        <div class="site-topbar">
+          <a class="site-brand" href="{{ '/' | relative_url }}">
+            <span class="site-brand-mark" aria-hidden="true">G</span>
+            <span class="site-brand-copy">
+              <span class="site-eyebrow bilingual">
+                <span class="en">personal engineering log</span>
+                <span class="ko">개인 엔지니어링 로그</span>
               </span>
-            </a>
-          </div>
+              <span class="site-title bilingual inline">
+                <span class="en">Dererif blog</span>
+                <span class="ko">Dererif 블로그</span>
+              </span>
+            </span>
+          </a>
 
           <div class="site-toolbar">
-            <nav class="site-nav">
+            <nav class="site-nav" aria-label="Primary">
               <a class="{% if page.url == '/' or page.url == '/index.html' %}is-active{% endif %}" href="{{ '/' | relative_url }}">
                 <span class="bilingual inline nav-label">
                   <span class="en">Home</span>
                   <span class="ko">홈</span>
-                </span>
-              </a>
-              <a class="{% if page.url == '/about/' %}is-active{% endif %}" href="{{ '/about/' | relative_url }}">
-                <span class="bilingual inline nav-label">
-                  <span class="en">About</span>
-                  <span class="ko">소개</span>
                 </span>
               </a>
               <div class="nav-dropdown {% if current_category_slug %}is-active{% endif %}">
@@ -82,15 +79,15 @@
                   aria-controls="site-category-menu"
                   aria-haspopup="true">
                   <span class="bilingual inline nav-label">
-                    <span class="en">Index</span>
-                    <span class="ko">색인</span>
+                    <span class="en">Topics</span>
+                    <span class="ko">주제</span>
                   </span>
                   <span class="nav-dropdown-caret" aria-hidden="true">+</span>
                 </button>
                 <div class="nav-dropdown-panel" id="site-category-menu" hidden>
                   <p class="nav-dropdown-heading bilingual">
-                    <span class="en">Browse writing tracks</span>
-                    <span class="ko">글 트랙 둘러보기</span>
+                    <span class="en">Browse by topic</span>
+                    <span class="ko">주제별로 둘러보기</span>
                   </p>
                   <div class="nav-dropdown-grid">
                     {% for category in site.data.categories %}
@@ -105,6 +102,12 @@
                   </div>
                 </div>
               </div>
+              <a class="{% if page.url == '/about/' %}is-active{% endif %}" href="{{ '/about/' | relative_url }}">
+                <span class="bilingual inline nav-label">
+                  <span class="en">About</span>
+                  <span class="ko">소개</span>
+                </span>
+              </a>
             </nav>
 
             <div class="language-switcher" role="group" aria-label="Language selector">
@@ -114,10 +117,29 @@
           </div>
         </div>
 
-        <p class="site-summary bilingual">
-          <span class="en">A personal index of architecture notes, debugging logs, toolsmithing write-ups, and developer workflow experiments.</span>
-          <span class="ko">아키텍처 노트, 디버깅 로그, 도구 제작 기록, 개발 워크플로우 실험을 정리하는 개인 문서 인덱스입니다.</span>
-        </p>
+        <div class="site-summary-row">
+          <p class="site-summary bilingual">
+            <span class="en">Game server architecture, client engineering, debugging notes, and tooling experiments organized for quick scanning.</span>
+            <span class="ko">게임 서버 아키텍처, 클라이언트 엔지니어링, 디버깅 노트, 도구 실험을 빠르게 훑어볼 수 있게 정리한 공간입니다.</span>
+          </p>
+
+          <div class="site-meta-pills" aria-label="Site overview">
+            <span class="site-meta-pill bilingual inline">
+              <span class="en">{{ site.data.categories | size }} topics</span>
+              <span class="ko">{{ site.data.categories | size }}개 주제</span>
+            </span>
+            <span class="site-meta-pill bilingual inline">
+              <span class="en">{{ total_posts }} posts</span>
+              <span class="ko">{{ total_posts }}개 글</span>
+            </span>
+            {% if latest_post %}
+              <span class="site-meta-pill bilingual inline">
+                <span class="en">Updated {{ latest_post.date | date: "%Y.%m.%d" }}</span>
+                <span class="ko">최근 갱신 {{ latest_post.date | date: "%Y.%m.%d" }}</span>
+              </span>
+            {% endif %}
+          </div>
+        </div>
       </header>
 
       <main class="site-main">
@@ -125,14 +147,24 @@
       </main>
 
       <footer class="site-footer">
-        <p class="footer-copy bilingual">
-          <span class="en">Architecture notes, build logs, and technical writing from geyopa.</span>
-          <span class="ko">게요파의 아키텍처 노트, 빌드 로그, 기술 문서를 모아둔 공간입니다.</span>
-        </p>
-        <p class="footer-meta bilingual">
-          <span class="en">Published with Jekyll and GitHub Pages.</span>
-          <span class="ko">Jekyll과 GitHub Pages로 배포합니다.</span>
-        </p>
+        <div class="footer-copy">
+          <p class="bilingual">
+            <span class="en">Architecture notes, build logs, and technical writing from Dererif.</span>
+            <span class="ko">Dererif의 아키텍처 노트, 빌드 로그, 기술 문서를 모아둔 공간입니다.</span>
+          </p>
+          <p class="footer-meta bilingual">
+            <span class="en">Published with Jekyll and GitHub Pages.</span>
+            <span class="ko">Jekyll과 GitHub Pages로 배포합니다.</span>
+          </p>
+        </div>
+
+        <div class="footer-links">
+          <a class="footer-link bilingual inline" href="{{ '/about/' | relative_url }}">
+            <span class="en">About</span>
+            <span class="ko">소개</span>
+          </a>
+          <a class="footer-link" href="mailto:parkbrother86@gmail.com">parkbrother86@gmail.com</a>
+        </div>
       </footer>
     </div>
     <script>
