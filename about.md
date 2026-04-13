@@ -1,8 +1,6 @@
 ---
 title: About
 permalink: /about/
-author_profile: false
-classes: wide
 ---
 
 <div class="bilingual">

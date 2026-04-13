@@ -1,0 +1,27 @@
+---
+layout: default
+---
+
+{% if page.summary_en or page.summary_kr %}
+  <div class="bilingual">
+    {% if page.summary_en %}<p class="en">{{ page.summary_en }}</p>{% endif %}
+    {% if page.summary_kr %}<p class="ko">{{ page.summary_kr }}</p>{% endif %}
+  </div>
+{% endif %}
+
+{{ content }}
+
+{% assign posts = site.categories[page.taxonomy] %}
+{% if posts and posts.size > 0 %}
+  <h2>Posts</h2>
+  <ul class="post-list">
+    {% for post in posts %}
+      {% include post_list_item.html post=post %}
+    {% endfor %}
+  </ul>
+{% else %}
+  <div class="bilingual">
+    <p class="en">No posts have been filed under this topic yet.</p>
+    <p class="ko">아직 이 주제에 등록된 글이 없습니다.</p>
+  </div>
+{% endif %}

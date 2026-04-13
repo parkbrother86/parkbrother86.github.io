@@ -1,0 +1,34 @@
+<li>
+  <p class="post-meta">{{ include.post.date | date: "%B %-d, %Y" }}</p>
+
+  {% if include.post.title_kr %}
+    <div class="bilingual post-list__title">
+      <h3 class="en"><a href="{{ include.post.url | relative_url }}">{{ include.post.title }}</a></h3>
+      <h3 class="ko"><a href="{{ include.post.url | relative_url }}">{{ include.post.title_kr }}</a></h3>
+    </div>
+  {% else %}
+    <h3><a href="{{ include.post.url | relative_url }}">{{ include.post.title }}</a></h3>
+  {% endif %}
+
+  {% if include.show_categories and include.post.categories %}
+    <p class="post-taxonomy">
+      {% for category in include.post.categories %}
+        <a href="{{ '/categories/' | append: category | append: '/' | relative_url }}">{{ category }}</a>{% unless forloop.last %} · {% endunless %}
+      {% endfor %}
+    </p>
+  {% endif %}
+
+  {% if include.post.excerpt_en or include.post.excerpt_kr or include.post.excerpt %}
+    <div class="bilingual">
+      {% if include.post.excerpt_en %}
+        <p class="en">{{ include.post.excerpt_en }}</p>
+      {% elsif include.post.excerpt %}
+        <p class="en">{{ include.post.excerpt | strip_html }}</p>
+      {% endif %}
+
+      {% if include.post.excerpt_kr %}
+        <p class="ko">{{ include.post.excerpt_kr }}</p>
+      {% endif %}
+    </div>
+  {% endif %}
+</li>
