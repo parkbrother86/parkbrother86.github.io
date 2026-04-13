@@ -27,7 +27,9 @@
           </nav>
         {% endif %}
 
-        {% include language-switcher.html %}
+        <div class="header-language-slot">
+          {% include language-switcher.html %}
+        </div>
 
         <ul class="site-actions">
           <li><a class="buttons github" href="{{ site.github.repository_url }}">View On GitHub</a></li>

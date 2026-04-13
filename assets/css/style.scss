@@ -34,6 +34,14 @@
   margin-top: 0;
 }
 
+.header-language-slot {
+  position: absolute;
+  top: 100%;
+  left: 50px;
+  width: 170px;
+  margin-top: 14px;
+}
+
 .page-title {
   margin: 0 0 0.35rem;
 }
@@ -154,5 +162,11 @@ html[data-language="kr"] .bilingual > .en {
 @media screen and (max-width: 960px) {
   .site-nav {
     justify-content: center;
+  }
+
+  .header-language-slot {
+    position: static;
+    width: auto;
+    margin: 0.25rem 0 1rem;
   }
 }
