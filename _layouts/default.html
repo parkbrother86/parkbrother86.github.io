@@ -27,6 +27,8 @@
           </nav>
         {% endif %}
 
+        {% include language-switcher.html %}
+
         <ul class="site-actions">
           <li><a class="buttons github" href="{{ site.github.repository_url }}">View On GitHub</a></li>
           <li><a class="buttons" href="{{ '/feed.xml' | relative_url }}">RSS Feed</a></li>
@@ -62,8 +64,6 @@
         <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
       </footer>
     </div>
-
-    {% include language-switcher.html %}
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
   </body>
 </html>
